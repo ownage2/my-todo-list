@@ -1,6 +1,6 @@
 import { DeleteButton, CancelButton, CompleteButton } from "./Button"
 
-const Working = ({ item, deleteFunction, completeFunction }) => {
+const Working = ({ item, deleteFunction, clicktoggleButtonHandler }) => {
     return (
         <div className="card">
             <div className="cardTop">
@@ -9,13 +9,13 @@ const Working = ({ item, deleteFunction, completeFunction }) => {
             </div>
             <div className="cardBottom">
                 <DeleteButton item={item} clickDeleteButtonHandler={deleteFunction}>삭제하기</DeleteButton>
-                <CompleteButton item={item} clickCompleteButtonHandler={completeFunction}>완료</CompleteButton>
+                <CompleteButton item={item} clicktoggleButtonHandler={clicktoggleButtonHandler}>완료</CompleteButton>
             </div>
         </div>
     )
 }
 
-const Done = ({ item, deleteFunction, cancelFunction }) => {
+const Done = ({ item, deleteFunction, clicktoggleButtonHandler }) => {
     return (
         <div className="card">
             <div className="cardTop">
@@ -24,7 +24,7 @@ const Done = ({ item, deleteFunction, cancelFunction }) => {
             </div>
             <div className="cardBottom">
                 <DeleteButton item={item} clickDeleteButtonHandler={deleteFunction}>삭제하기</DeleteButton>
-                <CancelButton item={item} clickCancelButtonHandler={cancelFunction}>취소</CancelButton>
+                <CancelButton item={item} clicktoggleButtonHandler={clicktoggleButtonHandler}>취소</CancelButton>
             </div>
         </div>
     )
