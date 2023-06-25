@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
-import { AddButton } from './components/Button';
-import { Done, Working } from './components/List';
+import { Header, Add, List } from './components/component';
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -9,16 +8,13 @@ function App() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const titleChangeHandler = (event) => {
-    setTitle(event.target.value);
-  }
-
-  const contentChangeHandler = (event) => {
-    setContent(event.target.value);
+  const onChangeHandler = (event) => {
+    // input태그의 name에 맞게 event처리
+    (event.target.name === "title") ? setTitle(event.target.value) : setContent(event.target.value);
   }
 
   const onSubmitHandler = () => {
-    // 새로운 Id번호 생성
+    // 새로운 id 생성
     const newId = id + 1;
     setId(newId);
 
@@ -37,70 +33,51 @@ function App() {
     setContent("");
   }
 
+  // 삭제 버튼
   const clickDeleteButtonHandler = (id) => {
     const newTodoList = todoList.filter(function (item) {
       return item.id !== id
     });
     setTodoList(newTodoList);
-  } 
+  }
 
-  const clicktoggleButtonHandler = (id) => {
+  // 완료, 취소 버튼
+  const clickToggleButtonHandler = (id) => {
+    // TodoList에서 id에 해당하는 list를 제거한 새로운 배열 생성
     let newTodoList1 = todoList.filter(function (item) {
       return item.id !== id
     })
+
+    // TodoList에서 id에 해당하는 list로 새로운 배열 생성
     let newTodoList2 = todoList.filter(function (item) {
       return item.id === id
     })
-    newTodoList2[0].isDone = !newTodoList2[0].isDone 
-    
 
-    // newTodoList2[0].isDone = !newTodoList2[0].isDone 
-    // 새로운 TodoList 생성
-    // const tempList = {
-    //   id: newTodoList2[0].id,
-    //   title: newTodoList2[0].title,
-    //   content: newTodoList2[0].content,
-    //   // isDone: true // 고정값을 주면 
-    //   isDone : !newTodoList2[0].isDone   // 62번째줄만 바꾸면 되는데 58-60 번째줄은 불필요한데 이걸 개선해볼까요. 
-    // }
+    // id에 해당하는 list의 isDone값을 반대로 변경(true ↔ false)
+    newTodoList2[0].isDone = !newTodoList2[0].isDone
 
     setTodoList([...newTodoList1, ...newTodoList2]);
   }
 
   return (
     <div className="myApp">
-      <div className="header">
-        <span>My Todo List</span>
-        <span>React</span>
-      </div>
-      <div className="add">
-        <div className="input">
-          <span>제목</span><input value={title} onChange={titleChangeHandler}></input>
-          <span>내용</span><input value={content} onChange={contentChangeHandler}></input>
-        </div>
-        <AddButton key={title} onSubmitHandler={onSubmitHandler}>추가하기</AddButton>
-      </div>
+      <Header />
+      <Add title={title} content={content} onChangeHandler={onChangeHandler} onSubmitHandler={onSubmitHandler} />
       <div className="todoList">
-        <span>Working.. 🔥</span>
-        <div className="list">
-          {
-            todoList.filter(function (item) {
-              return item.isDone !== true
-            }).map(function (item) {
-              return <Working key={item.id} item={item} deleteFunction={clickDeleteButtonHandler} clicktoggleButtonHandler={clicktoggleButtonHandler} />
-            })
-          }
-        </div>
-        <span>Done..! 🎉</span>
-        <div className="list">
-          {
-            todoList.filter(function (item) {
-              return item.isDone === true
-            }).map(function (item) {
-              return <Done key={item.id} item={item} deleteFunction={clickDeleteButtonHandler} clicktoggleButtonHandler={clicktoggleButtonHandler} />
-            })
-          }
-        </div>
+        <List
+          title="Working.. 🔥"
+          isDone={false}
+          todoList={todoList}
+          clickDeleteButtonHandler={clickDeleteButtonHandler}
+          clickToggleButtonHandler={clickToggleButtonHandler}
+        />
+        <List
+          title="Done..! 🎉"
+          isDone={true}
+          todoList={todoList}
+          clickDeleteButtonHandler={clickDeleteButtonHandler}
+          clickToggleButtonHandler={clickToggleButtonHandler}
+        />
       </div>
     </div>
   )
