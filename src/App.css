@@ -1,38 +1,205 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: "SUITE";
+  /* 사용하고 싶은 font-family명을 지정 */
+  src: url("./font/SUITE-Regular.otf") format("opentype");
+  /* 폰트파일 불러오기 */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  font-family: "SUITE";
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.myApp {
+  min-width: 800px;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  height: 50px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.header>span {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.add {
+  width: 100%;
+  height: 90px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: lightgray;
+
+  border-radius: 10px;
+}
+
+.add .input>span {
+  height: 40px;
+
+  margin-left: 20px;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.add .input>input {
+  width: 230px;
+  height: 40px;
+
+  margin-left: 10px;
+  border: transparent;
+  border-radius: 10px;
+  padding: 0px 10px 0px 10px;
+}
+
+.add .input>input:focus {
+  outline-color: darkcyan;
+}
+
+.add>button {
+  width: 150px;
+  height: 35px;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+  
+  margin-right: 20px;
+
   color: white;
+  background-color: darkcyan;
+
+  border: transparent;
+  border-radius: 10px;
+  padding: 0px 10px 0px 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.add>button:hover {
+  background-color: green;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todoList {
+  width: 96%;
+  /* background-color: green; */
+  display: flex;
+  flex-direction: column;
+}
+
+.todoList>span {
+  font-size: 1.5rem;
+  font-weight: 900;
+
+  /* margin-left: 20px; */
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+
+  gap: 10px;
+}
+
+.card {
+  width: 31%;
+  height: 200px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  gap: 10px;
+
+  border: 3px solid darkcyan;
+  border-radius: 10px;
+}
+
+.cardTop {
+  width: 90%;
+  height: 70%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding-top: 20px;
+}
+
+.cardTop .cardTitle {
+  font-size: 1.4rem;
+  font-weight: 900;
+
+  /* white-space: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.cardTop .cardContent {
+  font-size: 1.1rem;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.cardBottom {
+  width: 90%;
+  height: 30%;
+
+  display: flex;
+  justify-content: center;
+
+  gap: 10px;
+  
+  padding-bottom: 20px;
+}
+
+.cardBottom .button1 {
+  width: 50%;
+  background-color: transparent;
+
+  border: 2px solid red;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+.cardBottom .button2 {
+  width: 50%;
+  background-color: transparent;
+
+  border: 2px solid green;
+  border-radius: 10px;
+
+  cursor: pointer;
 }
