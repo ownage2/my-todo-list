@@ -15,21 +15,15 @@ function App() {
     (event.target.name === "title") ? setTitle(event.target.value) : setContent(event.target.value);
   }
 
+  // 추가하기 버튼
   const onSubmitHandler = () => {
     // 새로운 id 생성
     const newId = id + 1;
     setId(newId);
 
-    // 새로운 TodoList 생성
-    const newTodoList = {
-      id: newId,
-      title: title,
-      content: content,
-      isDone: false
-    }
+    // 새로운 Todo생성하여 List에 추가
+    setTodoList([...todoList, { id: newId, title, content, isDone: false }]);
 
-    // 새로운 Todo 추가
-    setTodoList([...todoList, newTodoList]);
     // 새로운 Todo 추가 후 제목input, 내용input 빈 값으로 초기화
     setTitle("");
     setContent("");
@@ -37,10 +31,8 @@ function App() {
 
   // 삭제 버튼
   const clickDeleteButtonHandler = (id) => {
-    const newTodoList = todoList.filter(function (item) {
-      return item.id !== id
-    });
-    setTodoList(newTodoList);
+    // id를 제외한 배열을 만들어서 List를 변경
+    setTodoList(todoList.filter((item) => item.id !== id));
   }
 
   // 완료, 취소 버튼
