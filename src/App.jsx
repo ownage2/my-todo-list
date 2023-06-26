@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './App.css'
-import { Header, Add, List } from './components/component';
+import Header from './components/Header';
+import AddSection from './components/AddSection';
+import ListSection from './components/ListSection';
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -59,23 +61,17 @@ function App() {
   return (
     <div className="myApp">
       <Header />
-      <Add title={title} content={content} onChangeHandler={onChangeHandler} onSubmitHandler={onSubmitHandler} />
-      <div className="todoList">
-        <List
-          title="Working.. 🔥"
-          isDone={false}
-          todoList={todoList}
-          clickDeleteButtonHandler={clickDeleteButtonHandler}
-          clickToggleButtonHandler={clickToggleButtonHandler}
-        />
-        <List
-          title="Done..! 🎉"
-          isDone={true}
-          todoList={todoList}
-          clickDeleteButtonHandler={clickDeleteButtonHandler}
-          clickToggleButtonHandler={clickToggleButtonHandler}
-        />
-      </div>
+      <AddSection
+        title={title}
+        content={content}
+        onChangeHandler={onChangeHandler}
+        onSubmitHandler={onSubmitHandler}
+      />
+      <ListSection
+        todoList={todoList}
+        clickDeleteButtonHandler={clickDeleteButtonHandler}
+        clickToggleButtonHandler={clickToggleButtonHandler}
+      />
     </div>
   )
 }

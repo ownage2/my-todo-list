@@ -1,29 +1,8 @@
-const Header = () => {
+const TempSection = ({ title, isDone, todoList, clickDeleteButtonHandler, clickToggleButtonHandler }) => {
     return (
-        <div className="header">
-            <span>My Todo List</span>
-            <span>React</span>
-        </div>
-    )
-}
-
-const Add = ({ title, content, onChangeHandler, onSubmitHandler }) => {
-    return (
-        <div className="add">
-            <div className="input">
-                <span>제목</span><input name="title" value={title} onChange={onChangeHandler}></input>
-                <span>내용</span><input name="content" value={content} onChange={onChangeHandler}></input>
-            </div>
-            <button onClick={onSubmitHandler}>추가하기</button>
-        </div>
-    )
-}
-
-const List = ({ title, isDone, todoList, clickDeleteButtonHandler, clickToggleButtonHandler }) => {
-    return (
-        <>
+        <div className="list-section">
             <span>{title}</span>
-            <div className="list">
+            <div className="card-list">
                 {
                     todoList.filter(function (item) {
                         return item.isDone === isDone
@@ -43,8 +22,8 @@ const List = ({ title, isDone, todoList, clickDeleteButtonHandler, clickToggleBu
                     })
                 }
             </div>
-        </ >
+        </div>
     )
 }
 
-export { Header, Add, List }
+export default TempSection
