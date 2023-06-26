@@ -43,20 +43,17 @@ function App() {
 
   // 완료, 취소 버튼
   const clickToggleButtonHandler = (id) => {
-    // TodoList에서 id에 해당하는 list를 제거한 새로운 배열 생성
-    let newTodoList1 = todoList.filter(function (item) {
-      return item.id !== id
-    })
+    // todoList를 복사하여 copyList 배열 생성
+    let copyList = [...todoList];
 
-    // TodoList에서 id에 해당하는 list로 새로운 배열 생성
-    let newTodoList2 = todoList.filter(function (item) {
-      return item.id === id
-    })
+    // todoList 배열에서 id에 맞는 객체를 찾아서 index 확인
+    const index = todoList.findIndex(item => item.id === id);
 
-    // id에 해당하는 list의 isDone값을 반대로 변경(true ↔ false)
-    newTodoList2[0].isDone = !newTodoList2[0].isDone
+    // copyList에서 index번째 객체의 isDone값을 반대로 변경(true ↔ false)
+    copyList[index] = { ...copyList[index], isDone: !copyList[index].isDone }
 
-    setTodoList([...newTodoList1, ...newTodoList2]);
+    // isDone을 변경한 복사배열인 copyList를 todoList에 넣어 state 변경
+    setTodoList([...copyList]);
   }
 
   return (
