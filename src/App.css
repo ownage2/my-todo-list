@@ -35,7 +35,7 @@
   margin-right: 20px;
 }
 
-.add {
+.add-section {
   width: 100%;
   height: 90px;
 
@@ -48,7 +48,7 @@
   border-radius: 10px;
 }
 
-.add .input>span {
+.add-section .input>span {
   height: 40px;
 
   margin-left: 20px;
@@ -57,7 +57,7 @@
   font-weight: 500;
 }
 
-.add .input>input {
+.add-section .input>input {
   width: 230px;
   height: 40px;
 
@@ -67,11 +67,11 @@
   padding: 0px 10px 0px 10px;
 }
 
-.add .input>input:focus {
+.add-section .input>input:focus {
   outline-color: darkcyan;
 }
 
-.add>button {
+.add-section>button {
   width: 150px;
   height: 40px;
 
@@ -90,18 +90,18 @@
   cursor: pointer;
 }
 
-.add>button:hover {
+.add-section>button:hover {
   background-color: green;
 }
 
-.todoList {
+.list-section {
   width: 96%;
   
   display: flex;
   flex-direction: column;
 }
 
-.todoList>span {
+.list-section>span {
   font-size: 1.5rem;
   font-weight: 900;
 
@@ -109,7 +109,7 @@
   margin-bottom: 20px;
 }
 
-.list {
+.card-list {
   display: flex;
   flex-direction: row;
   flex-flow: row wrap;
