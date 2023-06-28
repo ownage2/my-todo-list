@@ -20,13 +20,17 @@ function App() {
     // 새로운 id 생성
     const newId = id + 1;
     setId(newId);
+    
+    if (title.length === 0 || content.length === 0) {
+      alert("제목과 내용을 모두 입력해주세요!")
+    } else {
+      // 새로운 Todo생성하여 List에 추가
+      setTodoList([...todoList, { id: newId, title, content, isDone: false }]);
 
-    // 새로운 Todo생성하여 List에 추가
-    setTodoList([...todoList, { id: newId, title, content, isDone: false }]);
-
-    // 새로운 Todo 추가 후 제목input, 내용input 빈 값으로 초기화
-    setTitle("");
-    setContent("");
+      // 새로운 Todo 추가 후 제목input, 내용input 빈 값으로 초기화
+      setTitle("");
+      setContent("");
+    }
   }
 
   // 삭제 버튼
