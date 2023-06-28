@@ -2,7 +2,7 @@
 
 [**📙 React Lv.1**](https://teamsparta.notion.site/React-Lv-1-876a9fed6dac402999c0e4db2dc38d0f)
 
-## <img src="./public/logo192.png" width="20px"> 배포
+## <g-emoji class="g-emoji"><img src="./public/logo192.png" width="32px"></g-emoji> 배포
 
 ### [✔️ My Todo List](https://my-todo-list-silk-sigma.vercel.app/)
 
