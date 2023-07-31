@@ -3,6 +3,7 @@ const Header = () => {
         <div className="header">
             <span>My Todo List</span>
             <span>React</span>
+            <span>테스트테스트</span>
         </div>
     )
 }
